@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pomodoro Timer</h1>
+        
+        <div class="timer-section">
+            <div class="timer-type">
+                <button class="phase-btn active" data-phase="focus">Focus</button>
+                <button class="phase-btn" data-phase="break">Break</button>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer-circle">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle class="timer-path-elapsed" cx="50" cy="50" r="45"/>
+                        <path
+                            id="timer-path-remaining"
+                            stroke-dasharray="283"
+                            class="timer-path-remaining"
+                            d="
+                                M 50, 50
+                                m -45, 0
+                                a 45,45 0 1,0 90,0
+                                a 45,45 0 1,0 -90,0
+                            "
+                        ></path>
+                    </svg>
+                    <div id="timer">25:00</div>
+                </div>
+            </div>
+            
+            <div class="timer-controls">
+                <button id="startBtn">Start</button>
+                <button id="pauseBtn" style="display: none;">Pause</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+
+            <div class="timer-settings">
+                <div class="setting">
+                    <label>Focus Time (min):</label>
+                    <input type="number" id="focusTime" value="25" min="1" max="60">
+                </div>
+                <div class="setting">
+                    <label>Break Time (min):</label>
+                    <input type="number" id="breakTime" value="5" min="1" max="30">
+                </div>
+                <div class="setting">
+                    <label>Number of Cycles:</label>
+                    <input type="number" id="cycleCount" value="4" min="1" max="10">
+                </div>
+                <button id="saveSettings">Save Settings</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Tasks</h2>
+            <div class="task-input-group">
+                <input type="text" id="taskInput" placeholder="Enter task...">
+                <button id="addTask">Add Task</button>
+            </div>
+            <ul id="taskList"></ul>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+    <audio id="notificationSound" src="notification.mp3"></audio>
+</body>
+</html>
